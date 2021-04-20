@@ -5,7 +5,7 @@ class Clock extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: new Date(),
+      date: new Date(1, 1, 1, 0, 0, 0),
     }
   }
 
@@ -19,7 +19,11 @@ class Clock extends Component {
   }
 
   tick = () => {
-    this.setState({date: new Date()})
+    const {date} = this.state
+    const seconds = date.getSeconds() + 1
+    const minutes = date.getMinutes()
+    const hours = date.getHours()
+    this.setState({date: new Date(0, 0, 0, hours, minutes, seconds)})
   }
 
   render() {
